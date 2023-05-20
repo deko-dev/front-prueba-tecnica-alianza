@@ -8,6 +8,7 @@ const routes: Routes = [
     path: '',
     component: PagesComponent,
     children: [
+      { path: '', redirectTo: 'clients', pathMatch: 'full' },
       { path: 'clients', title: "Clients" ,component:  ClientsComponent}
     ]
   }
