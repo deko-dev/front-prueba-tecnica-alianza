@@ -1,0 +1,18 @@
+<main class="main">
+  <div class="navbar w-100">
+    <app-navbar></app-navbar>
+  </div>
+
+  <section class="main--layout w-100 min-h-screen flex justify-between items-start px-10 pt-5 pb-10">
+    <div class="main--layout--sidebar w-2/12">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="main--layout--content w-10/12 ps-5">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+
+  <div class="footer--page w-full h-16 flex justify-center items-center px-5">
+    <span class="text-blue-500 text-xs italic">Hecho con 💜 Deyser Orozco 💻 {{ anio }}</span>
+  </div>
+</main>

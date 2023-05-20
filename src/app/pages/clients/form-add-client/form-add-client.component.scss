@@ -1,0 +1,18 @@
+.modal--form--client {
+  width: 600px;
+  min-height: 500px;
+  background-color: #BFD7E5;
+}
+
+form {
+  .content--input {
+    label {
+      display: inline-block;
+    }
+    mat-form-field {
+      .mdc-text-field {
+        background-color: white;
+      }
+    }
+  }
+}

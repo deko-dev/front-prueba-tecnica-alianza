@@ -1,0 +1,51 @@
+<div class="modal--form--client border-2 border-black border-solid flex flex-col justify-center items-center px-4">
+  <div class="title--modal w-full border-b-2 border-b-gray-500 border-b-solid py-4">
+    <h2 mat-dialog-title class="p-0 text-gray-500 text-2xl font-normal text-left">Create New Client</h2>
+  </div>
+  <mat-dialog-content class="w-full">
+    <form [formGroup]="formNewClient" class="w-full" (ngSubmit)="sendClientNew($event)">
+      <div class="content--input">
+        <label class="w-2/12 text-lg">Name: </label>
+        <mat-form-field class="w-10/12">
+          <input matInput placeholder="Business ID" class="border-gray-500 border-2" formControlName="name">
+        </mat-form-field>
+      </div>
+      <div class="content--input">
+        <label class="w-2/12 text-lg">Phone: </label>
+        <mat-form-field class="w-10/12">
+          <input matInput placeholder="Phone" class="border-gray-500 border-2" formControlName="phone">
+        </mat-form-field>
+      </div>
+      <div class="content--input">
+        <label class="w-2/12 text-lg">Email: </label>
+        <mat-form-field class="w-10/12">
+          <input matInput placeholder="E-email" class="border-gray-500 border-2" formControlName="email" type="email" [email]="true">
+        </mat-form-field>
+      </div>
+      <div class="content--input">
+        <label class="w-2/12 text-lg">Star Date: </label>
+        <mat-form-field class="w-10/12">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="startDate" formControlName="startDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="content--input">
+        <label class="w-2/12 text-lg">End Date: </label>
+        <mat-form-field class="w-10/12">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="endDate" formControlName="endDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="forn--options flex justify-center">
+        <button type="submit" mat-raised-button class="mt-5 bg-blue-500 text-lg w-28 h-12 text-white" [disabled]="formNewClient.invalid">Enviar</button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>
