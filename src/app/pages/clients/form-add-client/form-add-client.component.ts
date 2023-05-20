@@ -15,6 +15,7 @@ import { IGeneralResonse } from 'src/app/shared/interfaces/IGeneralResponse';
 })
 export class FormAddClientComponent implements OnInit{
 
+  public isLoading: boolean = false;
   private isEditForm: boolean = false;
   public formNewClient: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -52,6 +53,7 @@ export class FormAddClientComponent implements OnInit{
   }
 
   async sendClientNew(event: any) {
+    this.isLoading = true;
     try {
       const { name, phone, email, startDate, endDate } = this.formNewClient.getRawValue()
       const newClient: IClient = {
@@ -72,16 +74,19 @@ export class FormAddClientComponent implements OnInit{
         }
         const responseUpdateClient = await firstValueFrom( this.apiService.updateClient( updateDataClient ) );
         if( responseUpdateClient.success ) {
+          this.isLoading = false;
           this.dialogRef.close(true);
         }
       } else {
         const responseCreateClient = await firstValueFrom( this.apiService.createClient( newClient ) );
         console.log( responseCreateClient );
         if( responseCreateClient.success ) {
+          this.isLoading = false;
           this.dialogRef.close(true);
         }
       }
     } catch (error: any) {
+      this.isLoading = false;
       console.error("Ha ocurrido un error", error);
       this._snackBar.open(error.error.message, "OK!")
     }

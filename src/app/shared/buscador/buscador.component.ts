@@ -15,6 +15,7 @@ export class BuscadorComponent {
   @Output() resultsToSearch: EventEmitter<IClient[]> = new EventEmitter<IClient[]>();
 
   showFormAdvancedSearch = false;
+  isLoading = false;
 
   formSharedKey = new FormGroup({
     sharedKey: new FormControl('', Validators.required)
@@ -26,6 +27,7 @@ export class BuscadorComponent {
   ){}
 
   async onSearchSharedKey(event: any) {
+    this.isLoading = true;
     try {
       const { sharedKey } = this.formSharedKey.getRawValue();
 
@@ -33,23 +35,31 @@ export class BuscadorComponent {
       if( resultToSearchData.success ) {
         if( resultToSearchData.data.length == 0 ) {
           this._snackBar.open("No existen clientes con ese shared key", "OK!");
+          this.isLoading = false;
           return;
         }
         this.resultsToSearch.emit( resultToSearchData.data );
+        this.isLoading = false;
       }
     } catch (error) {
       console.error('Ha ocurrido un error');
+      this.isLoading = false;
     }
   }
 
   async onAdvancedSearch( dataToSearch: IClient ) {
+    this.isLoading = true;
     try {
       const resultsAdvancedSearch = await firstValueFrom( this.apiService.searchToClientByKey(dataToSearch) )
       if( resultsAdvancedSearch.success ){
         this.resultsToSearch.emit( resultsAdvancedSearch.data );
+        this.isLoading = false;
+        this.showFormAdvancedSearch = false;
       }
     } catch (error) {
       console.error('Ha ocurrido un error');
+      this.showFormAdvancedSearch = false;
+      this.isLoading = false;
     }
   }
 

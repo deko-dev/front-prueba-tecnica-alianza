@@ -17,7 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { BuscadorComponent } from './buscador/buscador.component';
 import { FormAdvancedSearchComponent } from './form-advanced-search/form-advanced-search.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -38,6 +38,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
@@ -55,6 +56,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSnackBarModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,

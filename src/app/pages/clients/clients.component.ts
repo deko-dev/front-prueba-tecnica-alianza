@@ -14,6 +14,7 @@ import { IClient } from 'src/app/shared/interfaces/IClient';
 export class ClientsComponent implements OnInit {
   public clients: IClient[] = [];
   public resultsSearch = false;
+  public isLoading = false;
 
   public columnsTable: string[] = [
     'sharedKey', 'businessId', 'email', 'phone', 'createdAt', 'actions'
@@ -34,13 +35,16 @@ export class ClientsComponent implements OnInit {
 
   async getListClients() {
     this.resultsSearch = false;
+    this.isLoading = true;
     try {
       const responseListClient = await firstValueFrom(this.apiService.getListClient());
       if( responseListClient.success) {
         this.clients = responseListClient.data;
+        this.isLoading = false;
       }
     } catch ( error ) {
       console.error( "Ha ocurrido un error", error );
+      this.isLoading = false;
     }
   }
 
@@ -53,6 +57,7 @@ export class ClientsComponent implements OnInit {
   }
 
   exportarToCSV() {
+    this.isLoading = true;
     const csvData = this.convertToCSV();
 
     const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8' });
@@ -65,6 +70,7 @@ export class ClientsComponent implements OnInit {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+    this.isLoading = false;
   }
 
 
