@@ -4,37 +4,37 @@
   </div>
   <mat-dialog-content class="w-full">
     <form [formGroup]="formNewClient" class="w-full" (ngSubmit)="sendClientNew($event)">
-      <div class="content--input">
-        <label class="w-2/12 text-lg">Name: </label>
-        <mat-form-field class="w-10/12">
+      <div class="content--input flex flex-col gap-4 md:flex-row md:gap-0 items-center md:items-start">
+        <label class="text-center w-full md:w-2/12 text-lg">Name: </label>
+        <mat-form-field class="w-full md:w-10/12">
           <input matInput placeholder="Business ID" class="border-gray-500 border-2" formControlName="name">
         </mat-form-field>
       </div>
-      <div class="content--input">
-        <label class="w-2/12 text-lg">Phone: </label>
-        <mat-form-field class="w-10/12">
+      <div class="content--input flex flex-col gap-4 md:flex-row md:gap-0 items-center md:items-start">
+        <label class="text-center w-full md:w-2/12 text-lg">Phone: </label>
+        <mat-form-field class="w-full md:w-10/12">
           <input matInput placeholder="Phone" class="border-gray-500 border-2" formControlName="phone">
         </mat-form-field>
       </div>
-      <div class="content--input">
-        <label class="w-2/12 text-lg">Email: </label>
-        <mat-form-field class="w-10/12">
+      <div class="content--input flex flex-col gap-4 md:flex-row md:gap-0 items-center md:items-start">
+        <label class="text-center w-full md:w-2/12 text-lg">Email: </label>
+        <mat-form-field class="w-full md:w-10/12">
           <input matInput placeholder="E-email" class="border-gray-500 border-2" formControlName="email" type="email" [email]="true">
         </mat-form-field>
       </div>
-      <div class="content--input">
-        <label class="w-2/12 text-lg">Star Date: </label>
-        <mat-form-field class="w-10/12">
+      <div class="content--input flex flex-col gap-4 md:flex-row md:gap-0 items-center md:items-start">
+        <label class="text-center w-full md:w-2/12 text-lg">Star Date: </label>
+        <mat-form-field class="w-full md:w-10/12">
           <mat-label>Choose a date</mat-label>
-          <input matInput [matDatepicker]="startDate" formControlName="startDate" >
-          <mat-hint>DD/MM/YYYY</mat-hint>
+          <input matInput [matDatepicker]="startDate" formControlName="startDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="startDate"></mat-datepicker-toggle>
           <mat-datepicker #startDate></mat-datepicker>
         </mat-form-field>
       </div>
-      <div class="content--input">
-        <label class="w-2/12 text-lg">End Date: </label>
-        <mat-form-field class="w-10/12">
+      <div class="content--input flex flex-col gap-4 md:flex-row md:gap-0 items-center md:items-start">
+        <label class="text-center w-full md:w-2/12 text-lg">End Date: </label>
+        <mat-form-field class="w-full md:w-10/12">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="endDate" formControlName="endDate">
           <mat-hint>MM/DD/YYYY</mat-hint>
