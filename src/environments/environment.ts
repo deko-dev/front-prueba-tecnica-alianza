@@ -1,4 +1,4 @@
 export const environment = {
   producition: false,
-  apiUrl: "http://localhost:8080/api/v1"
+  apiUrl: "https://back-pta.rj.r.appspot.com/api/v1"
 }
