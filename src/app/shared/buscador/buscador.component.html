@@ -4,7 +4,7 @@
   (ngSubmit)="onSearchSharedKey($event)"
 >
   <div
-    class="content--input--search w-4/12 h-10 flex justify-start items-center border border-gray-500 border-solid rounded-full px-5"
+    class="content--input--search w-full sm:w-4/12 h-10 flex justify-start items-center border border-gray-500 border-solid rounded-full px-5"
   >
     <input
       class="w-8/12 text-gray-500 border-r-gray-500 border-r border-r-solid h-full outline-none"
@@ -15,13 +15,13 @@
     <button class="w-4/12 text-gray-500" type="submit" [disabled]="formSharedKey.invalid">Search</button>
   </div>
   <mat-spinner diameter="40" *ngIf="isLoading"></mat-spinner>
-  <div class="btn--advanced--search">
-    <button (click)="showFormAdvancedSearch = !showFormAdvancedSearch" mat-raised-button class="flex justify-center items-center  px-5 h-12 bg-blue-500 text-white text-base shadow-none">
+  <div class="btn--advanced--search w-full sm:w-4/12 flex justify-center sm:justify-start">
+    <button (click)="showFormAdvancedSearch = !showFormAdvancedSearch" mat-raised-button class="flex justify-center items-center  px-5 h-12 bg-blue-500 text-white text-base shadow-none w-10/12 sm:w-auto">
       Advanced Search
     </button>
 
   </div>
-  <div class="w-6/12" *ngIf="showFormAdvancedSearch">
+  <div class="w-full sm:w-6/12" *ngIf="showFormAdvancedSearch">
     <app-form-advanced-search (dataToSearch)="onAdvancedSearch($event)" ></app-form-advanced-search>
   </div>
 </form>

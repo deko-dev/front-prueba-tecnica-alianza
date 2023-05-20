@@ -1,20 +1,20 @@
-<div class="sidebar--content w-100">
+<div class="sidebar--content w-100 mb-10">
   <h1 class="text-2xl title--sidebar flex justify-start items-center gap-3 text-blue-500">
     <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="perm_identity"></mat-icon>
     {{ activeRoute }}
   </h1>
 
-  <ul class="flex flex-col justify-start items-start ps-5 pt-8 gap-5">
-    <li>
+  <ul class="flex flex-wrap flex-row md:flex-col justify-start items-start ps-5 pt-8 gap-5 mb-8 md:mb-0">
+    <li class="w-6/12">
       <a routerLink="/clients" class="text-gray-500 text-xl">Clients</a>
     </li>
-    <li>
+    <li class="w-6/12">
       <a routerLink="/clients" class="text-gray-500 text-xl">Client look history</a>
     </li>
-    <li>
+    <li class="w-6/12">
       <a routerLink="/clients" class="text-gray-500 text-xl">Emergency PIN configuration</a>
     </li>
-    <li>
+    <li class="w-6/12">
       <a routerLink="/clients" class="text-gray-500 text-xl">Emergency PIN history</a>
     </li>
 

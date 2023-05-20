@@ -1,10 +1,10 @@
 <div class="clients--page">
-  <div class="btns--actions flex justify-start items-center gap-5">
-    <button mat-button (click)="openModalCreateClient()" class="text-base flex justify-evenly items-center">
+  <div class="btns--actions flex justify-center md:justify-start items-start gap-5">
+    <button mat-button (click)="openModalCreateClient()" class="w-5/12 md:w-28 h-12 bg-blue-500 text-base flex justify-evenly items-center">
       <mat-icon fontIcon="add" class="text-gray-900"></mat-icon>
       <span class="text-white">New</span>
     </button>
-    <button mat-button class="text-base flex justify-evenly items-center" (click)="exportarToCSV()">
+    <button mat-button class="w-5/12 md:w-28 h-12 bg-blue-500 text-base flex justify-evenly items-center" (click)="exportarToCSV()">
       <mat-icon fontIcon="file_download" class="text-gray-900"></mat-icon>
       <span class="text-white">Export</span>
     </button>
@@ -14,7 +14,8 @@
     <app-buscador (resultsToSearch)="loadDataResultsSearch($event)"></app-buscador>
   </div>
 
-  <div class="table--clients pt-5 mt-5">
+
+  <div class="table--clients pt-5 mt-5 overflow-x-auto max-w-full">
     <h1 class="text-blue-500 text-2xl font-bold">Clients</h1>
 
     <button *ngIf="resultsSearch" mat-button class="bg-blue-500 w-6 h-10 text-base flex justify-center items-center p-0" (click)="getListClients()">
@@ -25,51 +26,53 @@
       <mat-spinner diameter="40"></mat-spinner>
     </div>
 
-    <table mat-table [dataSource]="clients" class="mat-elevation-z8 border-black border-2 border-solid shadow-none mt-5">
-      <ng-container matColumnDef="sharedKey">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Shared Key</th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.sharedKey}} </td>
-      </ng-container>
+    <div class="content--table w-full overflow-x-scroll">
+      <table mat-table [dataSource]="clients" class="mat-elevation-z8 border-black border-2 border-solid shadow-none mt-5 w-full">
+        <ng-container matColumnDef="sharedKey">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Shared Key</th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.sharedKey}} </td>
+        </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="businessId">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Business ID </th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.businessId}} </td>
-      </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="businessId">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Business ID </th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.businessId}} </td>
+        </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="email">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> E-mail </th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.email}} </td>
-      </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> E-mail </th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="phone">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Phone </th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.phone}} </td>
-      </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="phone">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Phone </th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.phone}} </td>
+        </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="createdAt">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Data Added </th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.startDate | date : 'dd/MM/y' }} </td>
-      </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="createdAt">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-48" mat-header-cell *matHeaderCellDef> Data Added </th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element"> {{element.startDate | date : 'dd/MM/y' }} </td>
+        </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="actions">
-        <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-20" mat-header-cell *matHeaderCellDef>
-          <mat-icon class="m-0">more_vert</mat-icon>
-        </th>
-        <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element">
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="actions">
+          <th class="border-black border-2 border-solid text-lg text-gray-900 text-center font-bold h-20 w-20" mat-header-cell *matHeaderCellDef>
+            <mat-icon class="m-0">more_vert</mat-icon>
+          </th>
+          <td class="border-black border-2 border-solid text-lg text-gray-500 text-center font-normal h-20" mat-cell *matCellDef="let element">
 
-          <button mat-button (click)="editClient(element)">
-            <mat-icon class="m-0">edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
+            <button mat-button (click)="editClient(element)">
+              <mat-icon class="m-0">edit</mat-icon>
+            </button>
+          </td>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="columnsTable"></tr>
-      <tr mat-row *matRowDef="let row; columns: columnsTable;"></tr>
-    </table>
+        <tr mat-header-row *matHeaderRowDef="columnsTable"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsTable;"></tr>
+      </table>
+    </div>
   </div>
 </div>

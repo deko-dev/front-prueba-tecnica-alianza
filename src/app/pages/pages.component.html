@@ -3,11 +3,11 @@
     <app-navbar></app-navbar>
   </div>
 
-  <section class="main--layout w-100 min-h-screen flex justify-between items-start px-10 pt-5 pb-10">
-    <div class="main--layout--sidebar w-2/12">
+  <section class="main--layout w-100 flex flex-wrap px-2 xl:px-10 pt-5 pb-10 xl:justify-between xl:items-start">
+    <div class="main--layout--sidebar w-full xl:w-2/12">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="main--layout--content w-10/12 ps-5">
+    <div class="main--layout--content w-full ps-0 xl:ps-5 xl:w-10/12">
       <router-outlet></router-outlet>
     </div>
   </section>

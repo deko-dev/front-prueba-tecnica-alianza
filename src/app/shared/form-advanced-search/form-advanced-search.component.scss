@@ -16,3 +16,12 @@ form {
     }
   }
 }
+
+
+@media screen and (max-width: 520px) {
+  .modal--form--client {
+    width: 100%;
+    min-height: 300px;
+    background-color: #BFD7E5;
+  }
+}
